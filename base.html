@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>canvas基础用法</title>
+    <style>
+      canvas {
+        box-shadow: 0px 0px 5px #ccc;
+        border-radius: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- git@github.com:tgp0315/electron-vite-vue.git -->
+    <!-- git@github.com:tgp0315/electron-vue-music.git -->
+    <!-- git@github.com:tgp0315/electron-vue-admin.git -->
+    <canvas id="canvas" width="500" height="500">
+      当前浏览器不支持canvas元素，请升级或更换浏览器
+    </canvas>
+    <script>
+      // 渲染上下文
+      const canvas = document.getElementById("canvas");
+
+      if (canvas.getContext) {
+        const ctx = canvas.getContext("2d");
+        // 绘制直线
+        // ctx.moveTo(50, 50)
+        // ctx.lineTo(200, 200)
+        // ctx.stroke()
+
+        // 绘制三角形
+        // ctx.moveTo(50, 50)
+        // ctx.lineTo(200, 200)
+        // ctx.lineTo(200, 50)
+        // ctx.lineTo(50, 50)
+        // ctx.stroke()
+        // 绘制矩形
+        // strokeRect(x, y, width, height) 绘制一个矩形的边框
+        // fillRect(x, y, width, height) 绘制一个填充的矩形
+        // clearRect(x, y, width, height) 清除指定矩形区域，让清除部分完全透明。
+        // ctx.strokeRect(50, 50, 200, 100)
+        // ctx.fillRect(201, 201, 300, 300)
+        // ctx.clearRect(210, 210, 50, 70);
+        //  绘制圆弧和圆
+        // 绘制圆弧或者圆，使用的方法是：arc(x, y, radius, startAngle, endAngle, anticlockwise)。x和Y为圆心的坐标，
+        // radius为半径，startAngle为圆弧或圆的开始位置，endAngle为圆弧或圆的结束位置，anticlockwise是绘制的方向
+        // ctx.beginPath() // 开启路径
+        // ctx.arc(60, 60, 50, 0, Math.PI, false)
+        // ctx.stroke()
+        // ctx.closePath()// 闭合路径
+        // ctx.beginPath() // 开启路径
+        // ctx.arc(200, 60, 50, 0, Math.PI * 2, false)
+        // ctx.stroke()
+        // ctx.closePath()// 闭合路径
+        // stroke方法是通过线条来绘制图形轮廓，而fill方法则是通过填充路径的内容区域生成实心的图形
+        // 绘制一段圆弧
+        // ctx.beginPath() // 开启路径
+        // ctx.arc(60, 60, 50, 0, Math.PI, false);
+        // ctx.stroke();
+        // // 绘制一个圆弧
+        // ctx.beginPath() // 开启路径
+        // ctx.arc(200, 60, 50, 0, Math.PI*2, false);
+        // ctx.stroke();
+        // // 填充一个四分之一圆弧
+        // ctx.beginPath() // 开启路径
+        // ctx.arc(60, 200, 50, 0, Math.PI/2, false);
+        // ctx.fill();
+        // // 填充一个半圆弧
+        // ctx.beginPath() // 开启路径
+        // ctx.arc(200, 200, 50, 0, Math.PI, false);
+        // ctx.fill();
+        // // 填充一个圆弧
+        // ctx.beginPath() // 开启路径
+        // ctx.arc(350, 200, 50, 0, Math.PI*2, false);
+        // ctx.fill();
+        // 椭圆
+        // 语法：ellipse(x, y, radiusX, radiusY, rotation, startAngle, endAngle, anticlockwise)
+        // x、y：椭圆的圆心位置
+        // radiusX、radiusY：x轴和y轴的半径
+        // rotation：椭圆的旋转角度，以弧度表示
+        // startAngle：开始绘制点
+        // endAngle：结束绘制点
+        // anticlockwise：绘制的方向（默认顺时针），可选参数。
+        // ctx.beginPath();
+        // ctx.ellipse(100, 150, 50, 100, 0, 0, 2 * Math.PI);
+        // ctx.stroke();
+        // ctx.beginPath();
+        // ctx.ellipse(400, 150, 50, 100, 0, 0, 2 * Math.PI);
+        // ctx.stroke();
+        // ctx.beginPath();
+        // ctx.ellipse(250, 350, 50, 100, Math.PI/2, 0, 2 * Math.PI); // 旋转90°
+        // ctx.fill();
+        // 贝塞尔曲线
+        // 语法：quadraticCurveTo(cp1x, cp1y, x, y)，其中cp1x和cp1y为一个控制点，x和y为结束点
+        // 一次贝塞尔曲线
+        // ctx.beginPath()
+        // ctx.moveTo(50, 50)
+        // ctx.quadraticCurveTo(200, 200, 350, 50)
+        // ctx.stroke()
+        // 二次贝塞尔曲线
+        // ctx.beginPath() // 开启路径
+        // ctx.moveTo(50, 50);
+        // ctx.quadraticCurveTo(200, 200, 350, 50);
+        // // 绘制
+        // ctx.stroke();
+        // // 绘制一段二次贝塞尔曲线
+        // ctx.beginPath() // 开启路径
+        // ctx.moveTo(50, 250);
+        // ctx.quadraticCurveTo(100, 400, 350, 250);
+        // // 绘制
+        // ctx.stroke()
+        // 三次贝塞尔曲线
+        // 语法：ctx.bezierCurveTo(cp1x,cp1y, cp2x,cp2y, x, y)，其中cp1x和cp1y为一个控制点，cp2x和cp2y为第二个控制点，x和y为结束点。
+        // ctx.beginPath()
+        // ctx.moveTo(50, 200)
+        // ctx.bezierCurveTo(100, 100, 200, 400, 360, 200)
+        // ctx.stroke()
+        // 线条
+        // 绘制一条宽度为20的直线
+        // 线条的样式 lineCap 设置线段端点显示的样子，可选值为：butt，round，square 默认为butt
+        // 线段连接处所显示的样子 lineJoin 可选值：round，bevel，miter 默认为miter
+        // ctx.beginPath()
+        // ctx.lineWidth = 20;
+        // ctx.lineCap = 'round'
+        // ctx.lineJoin = 'round'
+        // ctx.moveTo(50, 50);
+        // ctx.lineTo(80, 100);
+        // ctx.lineTo(200, 50);
+        // ctx.lineTo(300, 120);
+        // ctx.stroke();
+        // ctx.closePath();
+        // miterLimit 限制当两条线相交时交接处最大长度；所谓交接处长度（斜接长度）是指线条交接处内角顶点到外角顶点的长度。
+        // 线段之间夹角比较大时，交点不会太远，但随着夹角变小，交点距离会呈指数级增大。
+        // 如果交点距离大于miterLimit值，连接效果会变成了 lineJoin = bevel 的效果
+        // setLineDash 可以设置当前虚线样式。
+        // getLineDash 则是返回当前虚线设置的样式，长度为非负偶数的数组。
+        // ctx.beginPath()
+        // ctx.lineWidth = 5;
+        // ctx.lineJoin='miter'
+        // // ctx.miterLimit = 10
+        // ctx.setLineDash([5, 10, 20])
+        // console.log(ctx.getLineDash())
+        // ctx.moveTo(50, 50);
+        // ctx.lineTo(80, 50);
+        // ctx.lineTo(200, 50);
+        // ctx.lineTo(300, 50);
+        // for (i = 0; i < 30 ; i++) {
+        //     var dy = i % 2 == 0 ? 200 : 100;
+        //     ctx.lineTo(Math.pow(i, 1.5) * 2, dy);
+        // }
+        // ctx.stroke();
+        // ctx.closePath();
+        // // lineDashOffset  设置虚线样式的起始偏移量
+        // ctx.beginPath()
+        // ctx.lineWidth = 5;
+        // ctx.lineJoin='miter'
+        // // ctx.miterLimit = 10
+        // ctx.setLineDash([5, 10, 20])
+        // console.log(ctx.getLineDash())
+        // ctx.moveTo(50, 80);
+        // ctx.lineTo(80, 80);
+        // ctx.lineTo(200, 80);
+        // ctx.lineTo(300, 80);
+        // ctx.lineDashOffset = 8;
+        // // for (i = 0; i < 30 ; i++) {
+        // //     var dy = i % 2 == 0 ? 200 : 100;
+        // //     ctx.lineTo(Math.pow(i, 1.5) * 2, dy);
+        // // }
+        // ctx.stroke();
+        // ctx.closePath();
+        // // globalAlpha  设置透明度
+        // // 绘制一个矩形
+        // ctx.beginPath();
+        // 指定透明度的填充样式
+        // ctx.fillStyle = "rgba(0, 255, 0, 0.2)";
+        // ctx.fillRect(10,10,300,100);
+        // // 绘制一个矩形边框
+        // ctx.beginPath();
+        // // 指定透明度的描边样式
+        // ctx.strokeStyle = "rgba(255, 0, 0, 0.7)";
+        // ctx.strokeRect(10, 90, 100, 300);
+        // // 绘制一个圆
+        // ctx.beginPath()
+        // ctx.fillStyle = "rgba(255, 255, 0, 1)";
+        // // 设置透明度值
+        // ctx.globalAlpha = 0.5;
+        // ctx.arc(200, 200, 100, 0, Math.PI*2, true);
+        // ctx.fill();
+        // 线性渐变
+        // 语法：createLinearGradient(x1, y1, x2, y2)，参数分别为 起点的坐标和终点的坐标
+        // 在渐变的设置中还需要一个方法来添加渐变的颜色，语法为：gradient.addColorStop(offset, color)，
+        // 其中color就是颜色，offset 则是颜色的偏移值，只为0到1之间的数。
+        // const gradient = ctx.createLinearGradient(10, 10, 400, 10)
+        // gradient.addColorStop(0.5, "#00ff00")
+        // gradient.addColorStop(1, "#ff0000")
+        // ctx.beginPath()
+        // ctx.fillStyle = gradient
+        // ctx.fillRect(10, 150, 400, 100)
+        // 径向渐变
+        // 语法： ctx.createRadialGradient(x0, y0, r0, x1, y1, r1)，参数分别为开始圆的坐标和半径以及结束圆的坐标和半径。
+        // const gradient = ctx.createRadialGradient(50, 100, 100, 130, 100, 0)
+        // gradient.addColorStop(0.5, "#00ff00")
+        // gradient.addColorStop(1, "#ff0000")
+        // ctx.beginPath()
+        // ctx.fillStyle = gradient
+        // ctx.fillRect(10, 10, 200, 200)
+        // 图案样式
+        // 语法：createPattern(image, type)，参数分别为：Image 参数可以是一个 Image 对象，也可以是一个 canvas 对象，Type 为图案绘制的类型，
+        // 可用的类型分别有：repeat，repeat-x，repeat-y 和 no-repeat
+        // const img = new Image()
+        // img.src = './girl.jpg'
+        // img.onload = function() {
+        //     const ptrn = ctx.createPattern(img, 'no-repeat')
+        //     ctx.fillStyle = ptrn
+        //     ctx.fillRect(0, 0, 300, 450)
+        // }
+        // 绘制文本
+        // strokeText 描边
+        // 语法： ctx.strokeText(text,  x, y, maxWidth)参数分别为：
+        // text：绘制的文案
+        // x、y：文本的起始位置
+        // maxWidth：可选参数，最大宽度。需要注意的是当文案大于最大宽度时不是裁剪或者换行，而是缩小字体。
+        // ctx.font = "50px serif"; // 设置文案大小和字体
+        // ctx.strokeText("Canvas 详解", 50, 50);
+        // fillText 填充
+        // 语法：ctx.fillText(text, x, y, maxWidth)参数分别为：
+        // text：绘制的文案
+        // x、y：文本的起始位置
+        // maxWidth：可选参数，最大宽度。需要注意的是当文案大于最大宽度时不是裁剪或者换行，而是缩小字体。
+        // ctx.font = "50px serif"; // 设置文案大小和字体
+        // ctx.fillText("Canvas 详解", 50, 50);
+        // 文本样式
+        // 文本也是可以添加样式的，下面看一下可以设置那些样式
+        // font
+        // 用于绘制文本的样式。默认的字体是 10px sans-serif。
+        // textAlign
+        // 文本对齐的方式。可选值为：left、right、center、start和end。默认值是 start。
+        // direction
+        // 文本的方向。可选值为：ltr（文本方向从左向右）、rtl（文本方向从右向左）、inherit（根据情况继承 Canvas元素或者 Document 。）。默认值是 inherit。
+        // 需要注意的是 direction 属性会对 textAlign 属性产生影响。如果 direction 属性设置为 ltr，则textAlign属性的 left 和 start 的效果相同，
+        // right 和 end 的效果相同，如果 direction 属性设置为 rtl，则 textAlign属性的 left 和 end 的效果相同，right 和 start 的效果相同。
+        // ctx.font = '30px serif'
+        // ctx.direction = 'ltr'
+        // ctx.textAlign = 'left'
+        // ctx.strokeText('Hi Canvas !', 150, 100)
+        // ctx.direction = "rtl"; // 文本方向从左向右
+        // ctx.textAlign = "left"; // 左对齐
+        // ctx.strokeText("Hi Canvas !", 150, 400);
+        // textBaseline
+        // 基线对齐选项  决定文字垂直方向的对齐方式。可选值为：top、hanging、middle、alphabetic、ideographic和bottom。默认值是 alphabetic。
+        // ctx.font = "25px serif"; // 设置文案大小和字体
+        // ctx.strokeStyle = 'red';
+        // const baselines = ['top', 'hanging', 'middle', 'alphabetic', 'ideographic', 'bottom'];
+        // baselines.forEach(function (baseline, index) {
+        //     ctx.textBaseline = baseline;
+        //     let y = 60 + index * 60;
+        //     ctx.beginPath();
+        //     ctx.moveTo(10, y + 0.5);
+        //     ctx.lineTo(500, y + 0.5);
+        //     ctx.stroke();
+        //     ctx.fillText('Hi Canvas, Welcome to my world! (' + baseline + ')', 10, y);
+        //     ctx.fillStyle = '#f00'
+        // });
+        // measureText 测量文本   返回一个 TextMetrics对象
+        // ctx.font = "30px serif"; // 设置文案大小和字体
+        // ctx.beginPath();
+        // ctx.strokeText("Hi Canvas !", 150, 100);
+        // var text = ctx.measureText("Hi Canvas !");
+        // console.log("🚀  ~ 文案宽度：", text)
+        // 阴影
+        // shadowOffsetX、shadowOffsetY
+        // shadowOffsetX 和 shadowOffsetY 用来设定阴影在 X 和 Y 轴的延伸距离，它们是不受变换矩阵所影响的。负值表示阴影会往上或左延伸，正值则表示会往下或右延伸，它们默认都为 0。
+        // shadowBlur
+        // shadowBlur 用于设定阴影的模糊程度，其数值并不跟像素数量挂钩，也不受变换矩阵的影响，默认为 0。
+        // shadowColor
+        // shadowColor 是标准的 CSS 颜色值，用于设定阴影颜色效果，默认是全透明的黑色。
+        // ctx.font = "50px serif"; // 设置文案大小和字体
+        // ctx.shadowColor = "#cccccc"; //  设置阴影颜色
+        // ctx.fillStyle = "#ee7934"; //  设置填充颜色
+        // ctx.shadowOffsetX = 10; // X轴上的阴影
+        // ctx.shadowOffsetY = 10; // Y轴上的阴影
+        // ctx.shadowBlur = 5; // 阴影的模糊程度
+        // ctx.fillText("Hi Canvas !", 100, 50);
+        // ctx.fillRect(100, 100, 200, 100);
+        // ctx.shadowOffsetX = -10;
+        // ctx.shadowOffsetY = -10;
+        // ctx.shadowBlur = 10;
+        // ctx.fillText("Hi Canvas !", 100, 300);
+        // ctx.fillRect(100, 350, 200, 100);
+        // 绘制图片
+        // drawImage
+        // image：绘制到上下文的元素。
+        // sx、sy：裁剪框的左上角X轴坐标和Y轴坐标。
+        // sWidth、sHeight：裁剪框的宽度和高度。
+        // dx、dy：绘制到上下文的元素，在上下文中左上角的X轴坐标和Y轴坐标。
+        // dWidth、dHeight：绘制到上下文的元素，在上下文中绘制的宽度和高度。如果不说明，在绘制时image宽度和高度不会缩放。
+        // 绘制   drawImage(image, dx, dy)：只有单纯的绘制功能，可以绘制图片、视频和别的Canvas对象等。
+        // const image = new Image()
+        // image.src = './girl.jpg'
+        // image.onload = function() {
+        //   ctx.drawImage(image, 0, 0)
+        // }
+        // 缩放 drawImage(image, dx, dy, dWidth, dHeight)：在绘制的基础上我们又增加了两个参数，这两个参数能控制绘制元素的大小，整体实现一个缩放的效果。
+        // const image = new Image()
+        // image.src = './girl.jpg'
+        // image.onload = function() {
+        //   ctx.drawImage(image, 0, 0, 150, 300)
+        // }
+        // 裁剪  drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight)：在缩放的基础上又增加了四个参数，整体也是在缩放的基础上增加了裁剪的功能
+        // const image = new Image()
+        // image.src = './girl.jpg'
+        // image.onload = function() {
+        //   ctx.drawImage(image, 0, 0, 300, 450, 0, 0, 500, 500)
+        // }
+        // 变形  可以将原点移动到另一点，还能对网格进行旋转和缩放。
+        // 状态的保存和恢复  save() 和 restore() 方法是用来保存和恢复 canvas 状态的，方法不需要参数。可以理解为就是对canvas 状态的快照进行保存和恢复。
+        // Canvas的状态是存储在栈中的，每次调用save()方法后，当前的状态都会被推送到栈中保存起来。
+        // ctx.fillStyle = "#cccccc";
+        // ctx.fillRect(10, 10, 300, 100);
+        // ctx.save(); // 保存状态
+        // ctx.fillStyle = "#ee7034";
+        // ctx.fillRect(10, 150, 300, 100);
+        // ctx.restore(); // 还原到上次保存的状态
+        // ctx.fillRect(10, 320, 300, 100);
+        // 一个绘画状态包括：
+        // 应用的变形：移动、旋转、缩放、strokeStyle、fillStyle、globalAlpha、lineWidth、lineCap、lineJoin、miterLimit、lineDashOffset、shadowOffsetX、
+        // shadowOffsetY、shadowBlur、shadowColor、globalCompositeOperation、font、textAlign、textBaseline、direction、imageSmoothingEnabled等。
+        // 应用的裁切路径：clipping path
+        // PS：保存和恢复可以多次调用， 需要注意的是每一次调用 restore 方法，上一个保存的状态就从栈中弹出，所有设定都恢复。
+        // 移动、旋转和缩放
+        // 移动：translate(x, y) ，x 是左右偏移量，y 是上下偏移量。
+        // 旋转：rotate(angle)，angle是旋转的角度，它是顺时针旋转，以弧度为单位的值。
+        // 缩放：scale(x, y)，x 为水平缩放的值，y 为垂直缩放得值。x和y的值小于1则为缩小，大于1则为放大。默认值为 1。
+        // ctx.fillStyle = '#ee7034';
+        // ctx.save();
+        // ctx.save();
+        // ctx.translate(100, 100); // x和y轴都移动了100
+        // ctx.fillRect(0, 0, 100, 100);
+        // ctx.restore();
+        // ctx.rotate(Math.PI / 4); // 旋转了45度，Math.PI=180度
+        // ctx.fillRect(0, 0, 100, 100);
+        // ctx.restore();
+        // ctx.scale(2, 1.2);
+        // ctx.fillRect(100, 300, 100, 100);
+
+        // transform、setTransform、resetTransform
+        // transform(a, b, c, d, e, f)方法能将当前的变形矩阵乘上一个基于自身参数的矩阵；
+        // setTransform(a, b, c, d, e, f)方法会将当前变形矩阵重置为单位矩阵，然后用相同的参数调用 transform 方法
+        // resetTransform()方法为重置当前变形为单位矩阵。效果等同于调用 setTransform(1, 0, 0, 1, 0, 0)
+        // 需要注意的是transform方法和setTransform方法中如果任意一个参数是无限大（Infinity），那么变形矩阵也必须被标记为无限大，否则会抛出异常。
+        // 参数说明：
+        // a：水平方向的缩放
+        // b：竖直方向的倾斜偏移
+        // c：水平方向的倾斜偏移
+        // d：竖直方向的缩放
+        // e：水平方向的移动
+        // f：竖直方向的移动
+        // var sin = Math.sin(Math.PI / 6);
+        // var cos = Math.cos(Math.PI / 6);
+        // console.log("🚀 ~ cos, sin", cos, sin)
+        // ctx.translate(250, 250);
+        // var c = 0;
+        // for (var i=0; i <= 12; i++) {
+        //   c = Math.floor(255 / 12 * i);
+        //   ctx.fillStyle = `rgba(${c}, ${c}, ${c})`;
+        //   ctx.beginPath() // 开启路径
+        //   ctx.arc(60, 100, 100, 0, Math.PI*2, false);
+        //   ctx.fill();
+        //   console.log(cos, sin, c);
+        //   ctx.transform(cos, sin, -sin, cos, 0, 0);
+        // }
+        // // 绘制一个矩形
+        // ctx.fillStyle = "rgba(255, 128, 255, 0.5)";
+        // ctx.fillRect(0, 50, 100, 100);
+        // // 上面绘制的矩形不是我们想要的没因为它带上了上面transform的属性
+        // // 所以需要重置当前变形为单位矩阵
+        // ctx.resetTransform()
+        // ctx.fillStyle = "rgba(255, 128, 255, 0.5)";
+        // ctx.fillRect(0, 50, 100, 100);
+        // 合成
+        // 合成的图形受限于绘制的顺序。如果我们不想受限于绘制的顺序，那么我们可以利用 globalCompositeOperation 属性来改变这种情况。
+        // 语法：globalCompositeOperation = type，type为合成的类型，具体有哪些类型下面我们将分别看一下：
+        // source-over
+        // 默认值，在现有画布上下文之上绘制新图形。
+        // source-in
+        // 新图形只在新图形和目标画布重叠的地方绘制。其他的都是透明的。
+        // source-out
+        // 在不与现有画布内容重叠的地方绘制新图形。
+        // source-atop
+        // 新图形只在与现有画布内容重叠的地方绘制。
+        // destination-over
+        // 在现有的画布内容后面绘制新的图形。
+        // destination-in
+        // 现有的画布内容保持在新图形和现有画布内容重叠的位置。其他的都是透明的
+        // destination-out
+        // 现有内容保持在新图形不重叠的地方。
+        // destination-atop
+        // 现有的画布只保留与新图形重叠的部分，新的图形是在画布内容后面绘制的。
+        // lighter
+        // 两个重叠图形的颜色是通过颜色值相加来确定的。
+        // copy
+        // 只显示新图形。
+        // xor
+        // 图像中，那些重叠和正常绘制之外的其他地方是透明的。
+        // multiply
+        // 将顶层像素与底层相应像素相乘，结果是一幅更黑暗的图片。
+        // screen
+        // 像素被倒转，相乘，再倒转，结果是一幅更明亮的图片。
+        // overlay
+        // multiply 和 screen 的结合，原本暗的地方更暗，原本亮的地方更亮。
+        // darken
+        // 保留两个图层中最暗的像素
+        // lighten
+        // 保留两个图层中最亮的像素。
+        // color-dodge
+        // 将底层除以顶层的反置。
+        // color-burn
+        // 将反置的底层除以顶层，然后将结果反过来。
+        // hard-light
+        // 屏幕相乘（A combination of multiply and screen）类似于叠加，但上下图层互换了。
+        // soft-light
+        // 用顶层减去底层或者相反来得到一个正值。
+        // difference
+        // 一个柔和版本的强光（hard-light）。纯黑或纯白不会导致纯黑或纯白
+        // exclusion
+        // 和 difference 相似，但对比度较低。
+        // hue
+        // 保留了底层的亮度（luma）和色度（chroma），同时采用了顶层的色调（hue）。
+        // saturation
+        // 保留底层的亮度（luma）和色调（hue），同时采用顶层的色度（chroma）。
+        // color
+        // 保留了底层的亮度（luma），同时采用了顶层的色调 (hue) 和色度 (chroma)。
+        // luminosity
+        // 保持底层的色调（hue）和色度（chroma），同时采用顶层的亮度（luma）。
+        // ctx.beginPath();
+        // ctx.fillStyle = "rgba(255, 0, 0, 1)";
+        // ctx.fillRect(50, 100, 300, 150);
+        // ctx.globalCompositeOperation = 'luminosity'
+        // ctx.beginPath();
+        // ctx.fillStyle = "rgba(0, 255, 0, 1)";
+        // ctx.fillRect(50, 150, 150, 250);
+        // ctx.globalCompositeOperation = 'luminosity'
+        // ctx.beginPath();
+        // ctx.fillStyle = "rgba(0, 0, 255, 1)";
+        // ctx.fillRect(150, 200, 150, 150);
+        // 裁剪
+        // 裁剪的作用是遮罩，用来隐藏不需要的部分，所有的路径以外的部分都不会再canvas上绘制出来
+        // 裁剪的效果和 globalCompositeOperation 属性的 source-in 和 source-atop差不多，但也有区别，
+        // 最重要的区别是裁剪路径不会在 canvas 上绘制东西，而且它永远不受新图形的影响。这些特性使得它在特定区域里绘制图形时特别好用。
+        // 语法：clip() 将当前正在构建的路径转换为当前的裁剪路径。
+        // 默认情况下，canvas 有一个与它自身一样大的裁剪路径（也就是没有裁剪效果）。现在可以通过clip()来创建一个裁剪路劲（也就有裁剪效果了）。
+        // var img = new Image();
+        // img.src = './girl.jpg';
+        // img.onload = function(){
+        //   // 创建圆形裁剪路径
+        //   ctx.arc(250, 250, 200, 0, Math.PI*2, false);
+        //   ctx.clip();
+        //   // 创建完后绘制
+        //   ctx.drawImage(img, 0, 0, 500, 500);
+        // }
+        // clip(path, fillRule)
+        // path为需要剪切的 Path2D 路径
+        // fillRule为判断是在路径内还是在路径外，允许的值有 nonzero（默认值）：非零环绕原则，evenodd：奇偶环绕原则
+        // Path2D
+        // Path2D 用来声明路径，语法：Path2D()，它是一个构造函数，可以创建一个新的 Path2D 对象。
+        // Path2D()有不少方法，先了解一下：
+
+        // addPath()：添加一条新路径到对当前路径。
+        // closePath()：使笔点返回到当前子路径的起始点。它尝试从当前点到起始点绘制一条直线。 如果图形已经是封闭的或者只有一个点，那么此函数不会做任何操作。
+        // moveTo()：将一个新的子路径的起始点移动到 (x，y) 坐标。
+        // lineTo()：使用直线连接子路径的终点到 x, y 坐标。
+        // bezierCurveTo()：添加一条三次贝赛尔曲线到当前路径。 该方法需要三个点。 第一、第二个点是控制点，第三个点是结束点。起始点是当前路径的最后一个点，绘制贝赛尔曲线前，可以通过调用 moveTo() 进行修改。
+        // quadraticCurveTo()：添加一条二次贝赛尔曲线到当前路径。
+        // arc()：添加一条圆弧路径。 圆弧路径的圆心在 (x, y) 位置，半径为 r ，根据anticlockwise （默认为顺时针）指定的方向从 startAngle 开始绘制，到 endAngle 结束。
+        // arcTo()：根据控制点和半径添加一条圆弧路径，使用直线连接前一个点。
+        // ellipse()：添加一条椭圆路径。椭圆的圆心在（x,y）位置，半径分别是radiusX 和 radiusY ，按照anticlockwise （默认顺时针）指定的方向，从 startAngle 开始绘制，到 endAngle 结束。
+        // rect()：创建一条矩形路径，矩形的起点位置是 (x, y) ，尺寸为 width 和 height。
+        // var img = new Image();
+        // img.src = './girl.jpg';
+        // img.onload = function(){
+        //   var path1 = new Path2D();
+        //   path1.rect(100, 100, 300, 300);
+        //   ctx.clip(path1);
+        //   // 创建完后绘制
+        //   ctx.drawImage(img, 0, 0, 500, 500);
+        // }
+        // 动画
+        // 在 canvas 上绘制内容是用 canvas 提供的或者自定义的方法，而通常我们仅仅在脚本执行结束后才能看见结果，所以想在 for 循环里面完成动画是不可能的。那么为了实现动画，我们需要一些可以定时执行重绘的方法。
+        // setInterval(function, delay) ：定时器，当设定好间隔时间后，function 会定期执行。
+        // setTimeout(function, delay)：延时器，在设定好的时间之后执行函数
+        // requestAnimationFrame(callback)：告诉浏览器你希望执行一个动画，并在重绘之前，请求浏览器执行一个特定的函数来更新动画。
+        // 如果不需要与用户互动，可以使用 setInterval() 方法，它可以定期执行指定的代码。如果需要做游戏，
+        // 可以使用键盘或者鼠标事件配合上 setTimeout() 方法来实现。通过设置事件监听，可以捕捉用户的交互，并执行相应的动作。
+        // 下面我们采用 window.requestAnimationFrame()来实现一个动画效果。requestAnimationFrame()方法提供了更加平缓且有效率的方式来执行动画，
+        // 当系统准备好重绘条件后才会调用绘制动画帧。一般每秒钟回调函数执行 60 次，也有可能会被降低，因为通常情况下requestAnimationFrame()方法会遵循 W3C 的建议，
+        // 浏览器中的回调函数执行次数通常与浏览器屏幕刷新次数相匹配。还有为了提高性能和电池寿命，通常 requestAnimationFrame() 方法运行在后台标签页或者隐藏在 里时，requestAnimationFrame() 方法会暂停调用以提升性能和电池寿命。
+        // const sun = new Image()
+        // const moon = new Image()
+        // const earth = new Image()
+        // function init() {
+        //   sun.src = 'https://img.lovepik.com/element/40097/4339.png_300.png';
+        //   moon.src = 'https://www.freepnglogos.com/uploads/moon-png/moon-png-annual-celestial-overview-simone-matthews-18.png';
+        //   earth.src = './earth.png';
+        //   requestAnimationFrame(draw)
+        // }
+        // function draw() {
+        //   const ctx = document.getElementById('canvas').getContext('2d')
+        //   ctx.globalCompositeOperation = 'destination-over'
+        //   // 清空画布
+        //   ctx.clearRect(0, 0, 500, 500)
+        //   ctx.fillStyle = 'rgba(0, 0, 0, 0.4)'
+        //   ctx.strokeStyle = 'rgba(0, 153, 155, 0.4)'
+        //   ctx.save()
+        //   ctx.translate(250, 250) // 把原心移到画布中间
+        //   // 画一个地球
+        //   const time = new Date()
+        //   const earthDeg = ((2 * Math.PI) / 60) * time.getSeconds() + ((2 * Math.PI) / 60000) * time.getMilliseconds()
+        //   console.log(earthDeg, 'earthDeg')
+        //   ctx.rotate(earthDeg)
+        //   ctx.translate(200, 0);
+        //   ctx.drawImage(earth, -20, -20, 40, 40);
+        //    // 画一个月亮
+        //   ctx.save(); // 第二次保存画布状态
+        //   var moonDeg = ((2 * Math.PI) / 6) * time.getSeconds() + ((2 * Math.PI) / 6000) * time.getMilliseconds()
+        //   console.log(moonDeg, 'moonDeg')
+        //   ctx.rotate(moonDeg);
+        //   ctx.translate(0, 40);
+        //   ctx.drawImage(moon, -7.5, -7.5, 15, 15);
+        //   // 恢复状态
+        //   ctx.restore();
+        //   ctx.restore();
+        //   // 画一个地球运行的轨迹
+        //   ctx.beginPath();
+        //   ctx.arc(250, 250, 200, 0, Math.PI * 2, false);
+        //   ctx.stroke();
+        //   // 画一个太阳
+        //   ctx.drawImage(sun, 0, 0, 500, 500);
+        //   window.requestAnimationFrame(draw)
+        // }
+        // init()
+        // 总结一下绘制动画的基本步骤
+
+        // 清空 canvas：除非接下来要画的内容会完全充满 canvas（例如背景图），否则需要清空所有。最简单的做法就是用 clearRect 方法。
+        // 保存 canvas 状态：如果要改变 canvas 状态的设置（样式，变形之类的），之后又要在每画一帧之时都是原始状态的情况时，需要先保存一下。
+        // 绘制动画图形（animated shapes）
+        // 恢复 canvas 状态：如果已经保存了 canvas 的状态，可以先恢复它，然后重绘下一帧。
+        // 高级动画
+        // 高级动画就是在初级动画的基础上加上一些符合物理的运动，这样就能使我们的动画更生动而不是那么的呆板。
+        // 下面我们一步步来实现一个小球的自由落体的运动
+        // 绘制小球
+        // var ball = {
+        //   x: 100,
+        //   y: 100,
+        //   vx: 1, // 计算速率
+        //   vy: 3, // 计算速率
+        //   radius: 25,
+        //   color: 'blue',
+        //   draw: function() {
+        //     ctx.beginPath();
+        //     ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true);
+        //     ctx.closePath();
+        //     ctx.fillStyle = this.color;
+        //     ctx.fill();
+        //   }
+        // };
+        // ball.draw();
+        // 速率
+        // 我们通过给小球添加速率矢量进行移动。这个依旧用requestAnimationFrame() 方法来实现，在每一帧里面，依旧用clear 清理掉之前帧里旧的圆形
+        // 边界 想让小球反弹那么我们就需要添加边界
+        // 加速度
+        // 为了让动作更真实，我们还需要加入加速度的处理。
+        // function draw() {
+        //   // 清空画布
+        //   // ctx.clearRect(0, 0, canvas.width, canvas.height)
+        //   // 用带透明度的矩形代替清空  添加拖尾
+        //   ctx.fillStyle = 'rgba(255, 255, 255, 0.3)';
+        //   ctx.fillRect(0, 0, canvas.width, canvas.height);
+        //   ball.draw();
+        //   // 添加加速度
+        //   ball.vy *= .99;
+        //   ball.vy += .25;
+        //   // 添加速率
+        //   ball.x += ball.vx
+        //   ball.y += ball.vy
+        //   // 添加边界
+        //   if (ball.y + ball.vy > canvas.height || ball.y + ball.vy < 0) {
+        //     ball.vy = -ball.vy;
+        //   }
+        //   console.log(ball.y + ball.vy, '111111111')
+        //   console.log(ball.x + ball.vx, '222222222')
+        //   if (ball.x + ball.vx > canvas.width || ball.x + ball.vx < 0) {
+        //     ball.vx = -ball.vx;
+        //   }
+        //   window.requestAnimationFrame(draw)
+        // }
+        // window.requestAnimationFrame(draw)
+        // ball.draw()
+      }
+    </script>
+  </body>
+</html>
